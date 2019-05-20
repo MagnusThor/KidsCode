@@ -1,0 +1,145 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <style>
+        ul,
+        li,button,
+        select {
+            width: 100%;
+
+        }
+
+        span {
+            margin-left: 40px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="hero">
+                <h1>Affes och jakis expriment</h1>
+                <p>
+                    Det här exprimentet slår man slumpmässiga tärningar och kollar vilket svar som blir vanligast,i
+                    altenartivsrutan så kan du välja hur många gånger man ska slå tärningen.
+                    instruktion:
+                    Du kan börja med att välja alternativ hur många gånger tärningen ska slå. Sedan trycker du på
+                    startknappen och sedan får du upp en lista på hur många gånger tärningen har slagigt och sedan kan
+                    du
+                    jämföra vilket svar som blir vanligast.
+                </p>
+            </div>
+                <div class="form">
+                    <select id="num" class="form-control">
+                        <option value="10">10</option>
+                        <meta charset="utf-8">
+                        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+                        <option value="100">100</option>
+                        <option value="1000">1000</option>
+                        <option value="10000">10000</option>
+                        <option value="1000000">100000</option>
+                        <option value="1000000">1000000</option>
+                        <option value="10000000">10000000</option>
+                    </select>
+                    <div class="py-4">
+                        <button id="start" class="btn btn-primary">starta</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    
+    <div class="row">
+        <div class="col-sm-12">
+            <h2>Resultat</h2>
+                <div id="results" class="alert alert-info">
+
+                    </div>
+        </div>
+    </div>
+    <div class="row">
+            <div class="col-sm-12">
+                Vi som gjort kod experimentet är: Jakob Ekström Lind och Alfred Larsson.
+                </div>
+                </div>
+</div>
+   
+
+
+
+
+    <script>
+
+        function count(arrayToCount, n) {
+            return arrayToCount.filter(i => i === n).length;
+        }
+
+        console.log("startat");
+
+
+        function showResult(text, num) {
+
+            document.querySelector("#results").appendChild(document.createElement("ul"));
+            var p = document.createElement("li");
+            p.textContent = text;
+            var s = document.createElement("span");
+        
+            s.textContent = num;
+            p.appendChild(s);
+            document.querySelector("ul").appendChild(p);
+
+
+        }
+
+        function run() {
+
+            document.querySelector("#results").firstChild.remove();
+
+            var throws = document.querySelector("#num").value;
+            var dise = 4;
+            //console.log(kast,dise);
+            var r = Math.floor(Math.random() * 6) + 1;
+            //console.log(r);
+
+            var results = [];
+
+            for (var n = 0; n < throws; n++) {
+
+                var r = Math.floor(Math.random() * 6) + 1;
+                results.push(r);
+
+
+                //console.log (r);
+
+            }
+
+            showResult("antal 1", count(results, 1));
+            showResult("antal 2", count(results, 2));
+            showResult("antal 3", count(results, 3));
+            showResult("antal 4", count(results, 4));
+            showResult("antal 5", count(results, 5));
+            showResult("antal 6", count(results, 6));
+
+
+        }
+
+
+
+        document.querySelector("#start").addEventListener("click", run);
+
+
+
+
+    </script>
+</body>
+
+</html>
